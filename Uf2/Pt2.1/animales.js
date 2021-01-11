@@ -8,10 +8,10 @@ class Animal{
     set cambiarImg(img){
         this.img = img;
     }
-    transformar(raza){
+    transformar(animal){
              
     }
     mover(x,y){
-        
+
     }
 }
