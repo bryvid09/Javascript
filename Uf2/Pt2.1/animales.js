@@ -8,10 +8,17 @@ class Animal{
     set cambiarImg(img){
         this.img = img;
     }
-    transformar(animal){
-             
+    transformar(raça){
+        raça = new Animal('desconegut');
+        return raça;
     }
     mover(x,y){
-
+        if(y == '+'){
+            x++;
+        }
+        else if(y == '-'){
+            x--;
+        }
+        return x;
     }
 }

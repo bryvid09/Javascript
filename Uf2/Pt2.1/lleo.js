@@ -23,17 +23,14 @@ class Lleo extends Animal{
 
     mover(x,y){
         let movimientos;
-        if(x != 0){
+        if(x != 'centrat'){
             x++;
             movimientos = [x,y];            
         }        
-        else if(y != 0){
+        else if(y != 'centrat'){
             y++;
             movimientos = [x,y];
-        }
-        else{
-            movimientos = [x,y];
-        }
+        }        
         return movimientos;
     }
 }
