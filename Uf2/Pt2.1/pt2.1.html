@@ -1,20 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./tableros.js"></script>    
+    <link rel="stylesheet" href="./style.css" type="text/css" />
+    <script src="./tableros.js"></script>
+    <script src="./animales.js"></script>
+    <script src="./cavall.js"></script>
+    <script src="./conill.js"></script>
+    <script src="./lleo.js"></script>
+    <script src="./tigre.js"></script>
     <script>
-        let tab = new Tablero(3);
-        tab.iniciarTablero();
-        tab.rellenarAnimales();
+      window.onload = function () {
+        let tamany = prompt("Introduce el numero de casillas", "");
+        while(tamany<3){
+            alert("numero no valido!!");
+            tamany = prompt("Introduce el numero de casillas", "");
+        }
+          let tab = new Tablero(tamany);
+          tab.iniciarTablero();
+          tab.rellenarAnimales();
+          tab.mostrarTabla();        
+      };
     </script>
-</head>
-<body>
-    <h1>Fauna en movimiento</h1>    
-    <script>
-        tab.mostrarTabla();
-    </script>    
-</body>
+  </head>
+  <body>
+    <h1>Fauna en movimiento</h1>
+    <div id="tableros"></div>
+  </body>
 </html>

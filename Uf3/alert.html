@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        function mostarMen() {
+          alert("hola");
+        }
+        document.getElementById("boton").addEventListener("click", mostarMen);
+        document.getElementById("parrafo").addEventListener("onmouseover", mostarMen);
+      };
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <button id="boton">Click</button>
+    </div>
+    <div id="parrafo">parrafo</div>
+  </body>
+</html>

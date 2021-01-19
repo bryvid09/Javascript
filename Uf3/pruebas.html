@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        window.addEventListener("load", ejemplo); // window.onload= ejemplo;
+
+        function muestraMensaje(e) {
+          console.log("Has pulsado el ratón");
+          e.preventDefault(); //evita que se ejecute el submit y recargue la página
+        }
+        document.getElementById("boton").addEventListener("click", muestraMensaje, false);
+      };
+    </script>
+  </head>
+
+  <body>
+    <form action="./index.html" method="post">
+      <input type="submit" id="boton" name="boton" value="boton" />
+    </form>
+  </body>
+</html>
