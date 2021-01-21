@@ -12,21 +12,22 @@
     <script src="./lleo.js"></script>
     <script src="./tigre.js"></script>
     <script>
-      window.onload = function () {
-        let tamany = prompt("Introduce el numero de casillas", "");
-        while(tamany<3){
-            alert("numero no valido!!");
-            tamany = prompt("Introduce el numero de casillas", "");
-        }
-          let tab = new Tablero(tamany);
-          tab.iniciarTablero();
-          tab.rellenarAnimales();
-          tab.mostrarTabla();        
-      };
+      let tamany = prompt("Introduce el numero de casillas", "");
+      var tab = new Tablero(tamany);
+      window.onload = function () {        
+        while (tamany < 3) {
+          alert("numero no valido!!");
+          tamany = prompt("Introduce el numero de casillas", "");
+        }        
+        tab.iniciarTablero();
+        tab.rellenarAnimales();
+        tab.mostrarTabla();
+      };            
     </script>
   </head>
-  <body>
+  <body>    
     <h1>Fauna en movimiento</h1>
-    <div id="tableros"></div>
+    <button onclick='tab.moverAnimales()'>Mover</button>
+    <div id="tableros"></div>    
   </body>
 </html>

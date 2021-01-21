@@ -1,4 +1,17 @@
 #tableros{
     display: flex;
-    
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+img{
+    width: 75px;
+    height: 75px;
+}
+td{
+    width: 75px;
+    height: 75px;
+}
+#t1{
+    text-align: center;
 }

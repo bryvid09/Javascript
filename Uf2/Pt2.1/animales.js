@@ -1,24 +1,41 @@
-class Animal{
-    constructor(img){
+class Animal {
+    constructor(img) {
         this.img = img;
+        this.opt = '+';
     }
-    get verImg(){
+    get verImg() {
         return this.img;
     }
-    set cambiarImg(img){
+    set cambiarImg(img) {
         this.img = img;
     }
-    transformar(raça){
+    set cambiarOpt(opt) {
+        this.opt = opt;
+    }
+    transformar(raça) {
         raça = new Animal('desconegut');
         return raça;
     }
-    mover(x,y){
-        if(y == '+'){
-            x++;
+    mover(x, y, limite) {
+        if (this.opt == '+') {
+            x ++;
+            if (x == limite) {
+                this.cambiarOpt = '-';
+                x = limite - 1;
+                y ++;
+            }
+        } else {
+            x --;
+            if (x == -1) {
+                this.cambiarOpt = '+';
+                x = 0;
+                y ++;
+            }
         }
-        else if(y == '-'){
-            x--;
+        if (y == limite) {
+            y = 0;
         }
-        return x;
+        let movimientos = [x, y];
+        return movimientos;
     }
 }
