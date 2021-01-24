@@ -11,22 +11,25 @@ class Cavall extends Animal {
         } else if (raça instanceof Lleo) {
             raça = new Tigre('tigre');
             return raça;
-        } else if (raça instanceof Conill || raça instanceof Animal) {
+        } else if (raça instanceof Cavall) {
+            return raça;
+        } else if (raça instanceof Conill) {
             raça = new Animal('desconegut');
+            return raça;
         } else {
             return raça;
         }
     }
     mover(x, y, limite) {
-        x ++;
+        x++;
         y += 2;
         if (x == limite) {
             x = 0;
         }
-        if (y => limite) {
+        if (limite <= y) {
             y = y - limite;
         }
-        let movimientos = [x, y];
+        let movimientos = [y, x];
         return movimientos;
     }
 }

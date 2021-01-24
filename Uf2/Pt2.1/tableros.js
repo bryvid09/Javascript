@@ -1,10 +1,13 @@
 class Tablero {
-    constructor(medida) {
+    constructor() {
+        let medida = prompt("Medida del tablero");
         medida = parseInt(medida);
+        while(medida < 3) {
+            medida = parseInt(prompt("Medida del tablero"));
+        }
         this.tablero1 = new Array(medida);
         this.tablero2 = new Array(medida);
         this.altura = medida;
-        this.tabla = "";
     }
 
     iniciarTablero() {
@@ -56,38 +59,69 @@ class Tablero {
     }
 
     mostrarTabla() {
-        this.tabla = "<div id='t1'><table border='1'>";
+        let tabla = "<table border='1'>";
         for (let i = 0; i < this.tablero1.length; i++) {
-            this.tabla += "<tr>";
+            tabla += "<tr>";
             for (let j = 0; j < this.tablero1[i].length; j++) {
                 if (this.tablero1[i][j] != null) {
-                    this.tabla += "<td><img src='./img/" + this.tablero1[i][j].verImg + ".png'></td>";
+                    tabla += "<td><img src='./img/" + this.tablero1[i][j].verImg + ".png'></td>";
                 } else {
-                    this.tabla += "<td></td>";
+                    tabla += "<td></td>";
                 }
             }
-            this.tabla += "</tr>";
+            tabla += "</tr>";
         }
-        this.tabla += "</table><br>";
-        document.getElementById("tableros").innerHTML = this.tabla;
+        tabla += "</table>";
+        document.getElementById("t1").innerHTML = tabla;
+    }
+
+    mostrarTabla2() {
+        let tabla = "<table border='1'>";
+        for (let i = 0; i < this.tablero2.length; i++) {
+            tabla += "<tr>";
+            for (let j = 0; j < this.tablero2[i].length; j++) {
+                if (this.tablero2[i][j] != null) {
+                    tabla += "<td><img src='./img/" + this.tablero2[i][j].verImg + ".png'></td>";
+                } else {
+                    tabla += "<td></td>";
+                }
+            }
+            tabla += "</tr>";
+        }
+        tabla += "</table><br>";
+        document.getElementById("t2").innerHTML = tabla;
     }
 
 
     moverAnimales() {
         for (let i = 0; i < this.tablero1.length; i++) {
             for (let j = 0; j < this.tablero1[i].length; j++) {
+                this.tablero2[i][j] = this.tablero1[i][j];
+            }
+        }
+        for (let i = 0; i < this.tablero1.length; i++) {
+            for (let j = 0; j < this.tablero1[i].length; j++) {
                 if (this.tablero1[i][j] != null) {
-                    let posiciones = this.tablero1[i][j].mover(i, j, this.altura);
-                    if (this.tablero1[posiciones[0]][posiciones[1]] instanceof Animal) {
-                        this.tablero2[posiciones[0]][posiciones[1]] = this.tablero1[posiciones[0]][posiciones[1]];
-                        this.tablero1[posiciones[0]][posiciones[1]] = this.tablero1[i][j].transformar(this.tablero1[posiciones[0]][posiciones[1]]);
-                        this.tablero1[i][j] = null;
+                    if (this.tablero1[i][j] == this.tablero2[i][j]) {
+                        console.log(this.tablero1[i][j]);
+                        console.log(this.tablero2[i][j]);
+                        let posiciones = this.tablero1[i][j].mover(j, i, this.altura);
+                        if (this.tablero1[posiciones[0]][posiciones[1]] instanceof Animal) {
+                            this.tablero1[posiciones[0]][posiciones[1]] = this.tablero1[posiciones[0]][posiciones[1]].transformar(this.tablero1[i][j]);
+                            if (posiciones[0] != i || posiciones[1] != j) {
+                                this.tablero1[i][j] = null;
+                            }
+                        } else {
+                            this.tablero1[posiciones[0]][posiciones[1]] = this.tablero1[i][j];
+                            this.tablero1[i][j] = null;
+                        }
                     }
                 }
             }
         }
         this.mostrarTabla();
+        this.mostrarTabla2();
     }
 
-    
+
 }

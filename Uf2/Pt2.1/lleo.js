@@ -10,7 +10,9 @@ class Lleo extends Animal {
         } else if (raça instanceof Tigre) {
             raça = new Cavall('cavall');
             return raça;
-        } else if (raça instanceof Conill || raça instanceof Animal) {
+        } else if (raça instanceof Lleo) {
+            return raça;
+        } else if (raça instanceof Conill) {
             raça = new Animal('desconegut');
             return raça;
         } else {
@@ -20,16 +22,17 @@ class Lleo extends Animal {
 
     mover(x, y, limite) {
         if (x != Math.floor(limite / 2) && x != limite - 1) {
-            x ++;
+            x++;
         } else if (x == limite - 1) {
             x = 0;
+        } else if (x == Math.floor(limite / 2)) {
+            if (y != Math.floor(limite / 2) && y != limite - 1) {
+                y++;
+            } else if (y == limite - 1) {
+                y = 0;
+            }
         }
-        if (y != Math.floor(limite / 2) && y != limite - 1) {
-            y ++;
-        } else if (y != limite - 1) {
-            y = 0;
-        }
-        let movimientos = [x, y];
+        let movimientos = [y, x];
         return movimientos;
     }
 }

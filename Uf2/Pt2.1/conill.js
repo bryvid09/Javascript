@@ -5,13 +5,16 @@ class Conill extends Animal {
     }
 
     transformar(raça) {
-        if (raça instanceof Cavall || raça instanceof Animal || raça instanceof Lleo) {
-            raça = new Animal('desconegut');
-            return raça;
-        } else if (raça instanceof Tigre) {
+        if (raça instanceof Tigre) {
             raça = new Lleo('lleo');
             return raça;
-        } else {
+        } else if (raça instanceof Conill) {
+            return raça;
+        } else if(raça instanceof Cavall || raça instanceof Lleo){
+            raça = new Animal('desconegut');
+            return raça;
+        }
+        else{         
             return raça;
         }
     }
@@ -19,7 +22,7 @@ class Conill extends Animal {
     mover(x, y, limite) {
         x = Math.floor(Math.random() * limite);
         y = Math.floor(Math.random() * limite);
-        let movimientos = [x, y];
+        let movimientos = [y,x];
         return movimientos;
     }
 }

@@ -13,29 +13,34 @@ class Animal {
         this.opt = opt;
     }
     transformar(raça) {
-        raça = new Animal('desconegut');
-        return raça;
+        if (raça instanceof Cavall || raça instanceof Lleo || raça instanceof Tigre || raça instanceof Conill) {
+            raça = new Animal('desconegut');
+            return raça;
+        }
+        else{
+            return raça;
+        }
     }
     mover(x, y, limite) {
         if (this.opt == '+') {
-            x ++;
+            x++;
             if (x == limite) {
                 this.cambiarOpt = '-';
                 x = limite - 1;
-                y ++;
+                y++;
             }
         } else {
-            x --;
+            x--;
             if (x == -1) {
                 this.cambiarOpt = '+';
                 x = 0;
-                y ++;
+                y++;
             }
         }
         if (y == limite) {
             y = 0;
         }
-        let movimientos = [x, y];
+        let movimientos = [y, x];
         return movimientos;
     }
 }
