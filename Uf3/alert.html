@@ -6,11 +6,26 @@
     <title>Document</title>
     <script>
       window.onload = function () {
-        function mostarMen() {
-          alert("hola");
+        function boton() {
+          alert("Boton");
         }
-        document.getElementById("boton").addEventListener("click", mostarMen);
-        document.getElementById("parrafo").addEventListener("onmouseover", mostarMen);
+        function parrafo(){
+          alert("parrafo");
+        }
+        function imagenDentro(){
+          alert("encima de la imagen");
+        }
+        function imagenFuera(){
+          alert("fuera de la imagen");
+        }
+        function enlace(){
+          alert("Enlace");
+        }
+        document.getElementById("boton").addEventListener("click", boton);
+        document.getElementById("parrafo").addEventListener("mouseover", parrafo);
+        document.getElementById("imagen").addEventListener("mouseover", imagenDentro);
+        document.getElementById("imagen").addEventListener("mouseout", imagenFuera);
+        document.getElementById("enlace").addEventListener("click",enlace);
       };
     </script>
   </head>
@@ -19,6 +34,7 @@
     <div>
       <button id="boton">Click</button>
     </div>
-    <div id="parrafo">parrafo</div>
+    <div id="parrafo">parrafo<br><a href="#" id="enlace">Enlace</a></div>
+    <div id="imagen"><img src="https://image.slidesharecdn.com/clickeame-170709002809/95/clickeame-1-638.jpg?cb=1499560160"</div>
   </body>
 </html>

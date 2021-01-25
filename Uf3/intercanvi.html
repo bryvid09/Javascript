@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+    <script>
+        window.onload = function(){
+            document.getElementById("imagen").addEventListener("mouseover",function(){
+                this.src = "./img/php.png";
+            });
+            document.getElementById("imagen").addEventListener("mouseout",function(){
+                this.src="./img/js.png";
+            })
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <img src="./img/js.png" id="imagen">
+    </div>
+</body>
+</html>
