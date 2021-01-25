@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById("enlace_1").addEventListener("click", function () {
+                if (document.getElementById("contenidos_1").style.display != "none") {
+                    document.getElementById("contenidos_1").style.display = "none";
+                    this.innerHTML = "Mostrar contenido";
+                }
+                else{
+                    document.getElementById("contenidos_1").style.display = "block";
+                    this.innerHTML = "Ocultar contenido";
+                }
+            });
+            document.getElementById("enlace_2").addEventListener("click", function () {
+                if (document.getElementById("contenidos_2").style.display != "none") {
+                    document.getElementById("contenidos_2").style.display = "none";
+                    this.innerHTML = "Mostrar contenido";
+                }
+                else{
+                    document.getElementById("contenidos_2").style.display = "block";
+                    this.innerHTML = "Ocultar contenido";
+                }
+            });
+            document.getElementById("enlace_3").addEventListener("click", function () {
+                if (document.getElementById("contenidos_3").style.display != "none") {
+                    document.getElementById("contenidos_3").style.display = "none";
+                    this.innerHTML = "Mostrar contenido";
+                }
+                else{
+                    document.getElementById("contenidos_3").style.display = "block";
+                    this.innerHTML = "Ocultar contenido";
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+
+    <p id="contenidos_1">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus
+        libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc,
+        posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices
+        porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis,
+        faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at
+        posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+    <a id="enlace_1" href="#">Ocultar contenidos</a>
+
+    <br />
+
+    <p id="contenidos_2">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus
+        libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc,
+        posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices
+        porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis,
+        faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at
+        posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+    <a id="enlace_2" href="#">Ocultar contenidos</a>
+
+    <br />
+
+    <p id="contenidos_3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Sed mattis enim vitae orci. Phasellus
+        libero. Maecenas nisl arcu, consequat congue, commodo nec, commodo ultricies, turpis. Quisque sapien nunc,
+        posuere vitae, rutrum et, luctus at, pede. Pellentesque massa ante, ornare id, aliquam vitae, ultrices
+        porttitor, pede. Nullam sit amet nisl elementum elit convallis malesuada. Phasellus magna sem, semper quis,
+        faucibus ut, rhoncus non, mi. Duis pellentesque, felis eu adipiscing ullamcorper, odio urna consequat arcu, at
+        posuere ante quam non dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis scelerisque.</p>
+    <a id="enlace_3" href="#">Ocultar contenidos</a>
+
+</body>
+
+</html>

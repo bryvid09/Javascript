@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #conten{
+            display: flex;            
+            flex-direction: row;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            function ratoli(even) {
+                let evento = even || window.event;
+                let cliente = [evento.clientX, evento.clientY];
+                let pagina = [evento.pageX, evento.pageY];
+                let rat = document.getElementById("ratoli")
+                rat.innerHTML = "<h3>Ratón</h3><p>Navegador: [" + cliente[0] + ", " + cliente[1] + "]</p><p>Pagina: [" +
+                    pagina[0] + ", " + pagina[1] + "</p>";
+                rat.style.background = "#FFFFCC";
+                rat.style.border = "solid 1px gray";
+                rat.style.width = "170px";
+            }
+            function teclat(even) {
+                let evento = even || window.event;
+                let tec = document.getElementById("teclat")
+                tec.innerHTML = "<h3>Teclado</h3><p>Carácter: [" + evento.key + "]</p><p>Código: [" + evento.charCode + "]</p>";
+                tec.style.background = "#CCE6FF";
+                tec.style.border = "solid 1px gray"
+                tec.style.width = "170px";
+                tec.style.marginLeft = "20px"
+            }
+            function blanc() {
+                document.getElementById("ratoli").style.background = "#ffffff";
+                document.getElementById("teclat").style.background = "#ffffff";
+            }
+            document.onclick = ratoli;
+            document.onkeypress = teclat;
+            document.onmousemove = blanc;
+        }
+    </script>
+</head>
+
+<body>
+    <div id="conten">
+        <div id="ratoli">
+        </div>        
+        <div id="teclat">
+        </div>
+    </div>
+</body>
+
+</html>
