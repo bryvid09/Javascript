@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #cuadrat {
+            background-color: red;
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let posX = 0;
+            let posY = 0;
+            function move(even) {
+                let cuadrat = document.querySelector("#cuadrat");
+                let evento = even || window.event;
+                if (evento.keyCode == "39") {
+                    posX+=5;
+                    cuadrat.style.left = posX + "px";
+                }
+                if (evento.keyCode == "37") {
+                    posX-=5;
+                    cuadrat.style.left = posX + "px";
+                }
+            }
+            document.onkeydown = move;
+        }        
+    </script>
+</head>
+
+<body>
+    <div id="cuadrat">
+
+    </div>
+</body>
+
+</html>

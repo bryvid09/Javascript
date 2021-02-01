@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="index.html" method="get">
+        Codi Postal:<input type="text" pattern="\d{5}"><br>
+        Numero telefón:<input type="text" pattern="[8-9]\d-\d{3}-\d{2}-\d{2}"><br>
+        Numero telefón punts:<input type="text" pattern="[8-9]\d-\d{1}\.\d{3}\.\d{4}"><br>
+        Numero telefón Internacional:<input type="text" pattern="\(\+\d+\)\d{9}"><br>
+        Nom usuari:<input type="text" pattern="\w{4,15}"><br>
+        Nom real:<input type="text" pattern="\-?\d+(,\d+)?"><br>
+        ISBN:<input type="text" pattern="\d{3}\-\d{1}\-\d{2}\-\d{6}\-\d{1}"><br>
+        Numero seguretat social:<input type="text" pattern="\d{2}\-\d{9}"><br>
+        Adreça Postal:<input type="text" pattern="^(C\\|Pz\.|Av\.)[a-zA-Z ]+\.\d+\-\d+$"><br>
+        <input type="submit" value="enviar">
+    </form>
+</body>
+</html>
