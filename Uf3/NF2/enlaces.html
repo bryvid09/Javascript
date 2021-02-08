@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            let info = document.getElementsByClassName('info');
+            let nParafos = document.getElementsByTagName('p');
+            let nEnlaces = document.getElementsByTagName('a');
+            let penultimEnlace = nEnlaces[nEnlaces.length - 2].href;
+            let nEnlacesP3 = nParafos[2].getElementsByTagName('a').length;
+            let informacion = document.createTextNode("Numero de parrafos: " + nParafos.length + "\nNumero de enlaces: " + nEnlaces.length + "\nDirección del penultimo enlace: " + penultimEnlace +
+                "\nNumero de enlaces parrafo 3: " + nEnlacesP3);
+            info[0].appendChild(informacion);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="contenido">
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum ad enim qui. Molestiae architecto illo
+            voluptatum dignissimos deleniti sint laboriosam at! Rem accusamus porro laboriosam magnam nesciunt
+            temporibus error asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus amet odit
+            repellendus rerum ducimus, quam inventore, cupiditate autem quidem blanditiis esse similique adipisci optio
+            sit architecto est eligendi at beatae.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum
+            ad enim qui. Molestiae architecto illo
+            voluptatum dignissimos deleniti sint laboriosam at! Rem accusamus porro laboriosam magnam nesciunt
+            temporibus error asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus amet odit
+            repellendus rerum ducimus, quam inventore, cupiditate autem quidem blanditiis esse similique adipisci optio
+            sit architecto est eligendi at beatae.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum
+            ad enim qui. Molestiae architecto illo
+            voluptatum dignissimos deleniti sint laboriosam at! Rem accusamus porro laboriosam magnam nesciunt
+            temporibus error asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus amet odit
+            repellendus rerum ducimus, quam inventore, cupiditate autem quidem blanditiis esse similique adipisci optio
+            sit architecto est eligendi at beatae.<a href="https://www.google.com">Google</a>
+        </p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum ad enim qui. Molestiae architecto illo
+            voluptatum dignissimos deleniti sint laboriosam at! Rem accusamus porro laboriosam magnam nesciunt
+            temporibus error asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit.<a
+                href="https://es.wikipedia.org/wiki/Wikipedia:Portada">Wikipedia</a> Delectus amet odit
+            voluptatum dignissimos deleniti sint laboriosam at! Rem accusamus porro laboriosam magnam nesciunt
+            temporibus error asperiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus amet odit
+            repellendus rerum ducimus, quam inventore, cupiditate autem quidem blanditiis esse similique adipisci optio
+            sit architecto est eligendi at beatae.<a href="http://www2.lamerce.com/">La merce</a>
+        </p>
+        <p>
+            temporibus error asperiores.<a href="https://www.pccomponentes.com/">tienda</a> Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Delectus amet odit
+            repellendus <a href="https://www.disneyplus.com/es-es/">entretenimiento</a> rerum ducimus, quam inventore,
+            cupiditate autem quidem blanditiis esse similique adipisci optio
+            sit architecto est eligendi at beatae.<a href="https://www.youtube.com">Youtube</a>
+        </p>
+    </div>
+    <div id="informacion" class="info">
+
+    </div>
+</body>
+
+</html>

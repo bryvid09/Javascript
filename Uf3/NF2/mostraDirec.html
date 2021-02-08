@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            let enlaces = document.getElementsByClassName('enlace');
+            for(let i = 0; i < enlaces.length; i++){
+                enlaces[i].addEventListener('mouseover',function(){
+                    let texto = document.getElementById('direccion');
+                    texto.value = enlaces[i].href;
+                })
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="direccion">
+    <ul>
+        <li><a class="enlace" href="https://www.google.es/">Google</a></li>
+        <li><a class="enlace" href="https://www.youtube.com/">Youtube</a></li>
+        <li><a class="enlace" href="https://translate.google.com/">Traductor</a></li>        
+    </ul>
+</body>
+</html>
