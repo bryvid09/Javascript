@@ -8,24 +8,34 @@
     <script>
         window.onload = function () {
             let opciones = document.getElementsByName('doc');
-            for (let i = 0; i < opciones.length; i++) {
-                opciones[i].addEventListener('click', function () {
+            document.querySelector('#html').addEventListener('click', function () {
+                if (document.querySelector('#texto')) {
+                    document.body.removeChild(document.querySelector('#texto'));
+                }
+            });
+            document.querySelector('#css').addEventListener('click', function () {
+                if (document.querySelector('#texto')) {
+                    document.body.removeChild(document.querySelector('#texto'));
+                }
+            });
+            document.querySelector('#altre').addEventListener('click', function () {
+                if (!document.querySelector('#texto')) {
                     let texto = document.createElement('input');
-                    texto.type = 'text';
-                    if (opciones[i].checked == true && opciones[i].value == 'altre') {                        
-                        document.body.appendChild(texto);
-                    }                    
-                });
+                    texto.id = "texto";
+                    texto.type = "text";
+                    document.body.appendChild(texto);
+                }
+            })
 
-            }
-        }
+        }        
     </script>
 </head>
 
 <body>
-    <input type="radio" name="doc" value="html">HTML
-    <input type="radio" name="doc" value="css">CSS
-    <input type="radio" name="doc" value="altre">Altre<br>
+
+    <input type="radio" name="doc" id="html" value="html">HTML
+    <input type="radio" name="doc" id="css" value="css">CSS
+    <input type="radio" name="doc" id="altre" value="altre">Altre<br>
 </body>
 
 </html>

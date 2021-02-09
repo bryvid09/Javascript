@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            let area = document.querySelector('textarea');
+            document.getElementById('crearP').addEventListener('click',function(){
+                let texto = prompt("Texto: ","");
+                if(texto){                    
+                    let contenido = document.createTextNode(texto+"\n");                   
+                    area.appendChild(contenido);
+                    area.style.color = "red";
+                }
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <button id="crearP">Crear parrafos</button>
+    <button id="crearImg">Crear Imagen</button>
+    <button id="borrarP">Borrar primero</button>
+    <button id="borrarUl">Borrar ultimo</button>
+    <button id="sustPrimero">Sustituir primero por vacio</button><br>
+    <textarea id="parrafos" rows="10" cols="15"></textarea>
+</body>
+
+</html>
