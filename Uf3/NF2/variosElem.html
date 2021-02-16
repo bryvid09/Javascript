@@ -7,13 +7,39 @@
     <title>Document</title>
     <script>
         window.onload = function () {
-            let area = document.querySelector('textarea');
-            document.getElementById('crearP').addEventListener('click',function(){
-                let texto = prompt("Texto: ","");
-                if(texto){                    
-                    let contenido = document.createTextNode(texto+"\n");                   
-                    area.appendChild(contenido);
-                    area.style.color = "red";
+            let posicion = 0;
+            document.getElementById('crearP').addEventListener('click', function () {
+                let parrafo = document.createElement('p');
+                let texto = document.createTextNode(document.getElementById('parrafos').value);
+                parrafo.appendChild(texto);
+                parrafo.style.color = 'red';
+                parrafo.id = posicion++;
+                let textArea = document.getElementById('parrafos');
+                document.body.insertBefore(parrafo, textArea);
+            });
+            document.getElementById('crearImg').addEventListener('click', function () {
+                let url = prompt('Direccion de imagen', "");
+                let descripcion = prompt('Descripcion de imagen', "");
+                if (url) {
+                    let imagen = document.createElement('img');
+                    imagen.src = url;
+                    imagen.alt = descripcion
+                    imagen.style.width = '80px';
+                    imagen.style.height = '80px';
+                    let textArea = document.getElementById('parrafos');
+                    document.body.insertBefore(imagen, textArea);
+                    let espacio = document.createElement('br');
+                    document.body.insertBefore(espacio, textArea);
+                }
+            });
+            document.getElementById('borrarP').addEventListener('click',function(){
+                if(document.getElementById('0')){
+                    document.body.removeChild(document.getElementById('0'));
+                }
+            });
+            document.getElementById('borrarUl').addEventListener('click',function(){
+                if(document.getElementById(posicion-1)){
+                    
                 }
             });
         }
@@ -21,12 +47,12 @@
 </head>
 
 <body>
+    <textarea id="parrafos" rows="10" cols="15"></textarea><br>
     <button id="crearP">Crear parrafos</button>
     <button id="crearImg">Crear Imagen</button>
     <button id="borrarP">Borrar primero</button>
     <button id="borrarUl">Borrar ultimo</button>
     <button id="sustPrimero">Sustituir primero por vacio</button><br>
-    <textarea id="parrafos" rows="10" cols="15"></textarea>
 </body>
 
 </html>
