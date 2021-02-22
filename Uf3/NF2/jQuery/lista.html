@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $('#esconder').click(function(){
+                $('#primera li').hide();
+            })
+        });
+    </script>
+</head>
+<body>
+    <ul id="primera">
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+    </ul>
+    <ul id="segunda">
+        <li>Elemento 1 Lista 2</li>
+        <li>Elemento 2 Lista 2</li>
+        <li>Elemento 3 Lista 2</li>
+        <li>Elemento 4 Lista 2</li>
+    </ul>
+
+    <button id="esconder">Esconder</button>
+</body>
+</html>

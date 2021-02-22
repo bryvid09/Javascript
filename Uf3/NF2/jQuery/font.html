@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $('h1:nth-child(1)').click(function () {
+                $(this).css({
+                    'background-color': 'red',
+                    'color': 'white',
+                    'font-family' : 'Arial',
+                });
+            });
+            $('h1:nth-child(2)').click(function(){
+                $(this).css({
+                    'background-color': 'blue',
+                    'color': 'red',
+                    'font-family' : 'sans-serif',
+                });
+            })
+        });
+    </script>
+</head>
+
+<body>
+    <h1>PRIMER TITULO</h1>
+    <h1>SEGUNDO TITULO</h1>
+</body>
+
+</html>
