@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #rojo{            
+            display: flex;
+            flex-direction: row;            
+            flex-wrap: wrap;
+            background-color: red;
+            width: 400px;
+            height: 400px;            
+        }
+        div{
+            margin: 5px;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function (){
+            $('#primero').click(function(){
+                $('#rojo').empty();
+            });
+            $('#segundo').click(function(){
+                $('#rojo').html('<div class="verde" id="primero"></div>');
+                $('.verde').css({
+                    'background-color':'green',
+                    'width':'50px',
+                    'height':'50px',
+                });                
+            });
+            $('#tercero').click(function(){
+                $('#rojo').find('div#primero').removeAttr('id','ultimo');
+                $('#rojo').append('<div class="azul" id="ultimo"></div>');
+                $('.azul').css({
+                    'background-color':'blue',
+                    'width':'70px',
+                    'height':'50px',
+                });
+            });
+            $('#cuarto').click(function(){                
+                $('#rojo').prepend('<div class="amarillo" id="primero"></div>');
+                $('.amarillo').css({
+                    'background-color':'yellow',
+                    'width':'90px',
+                    'height':'30px',
+                });
+            });
+            $('#quinto').click(function(){
+                $('#rojo').children().last().remove();
+            });
+            $('#sexto').click(function(){
+                $('#rojo').children().first().remove();
+            })
+        });
+    </script>
+</head>
+<body>
+    <div id="rojo"></div>
+    <button id="primero">Eliminar todos los elementos</button><br>
+    <button id="segundo">Insertar cuadrado verde</button><br>
+    <button id="tercero">Añadir cuadrado azul en ultima posición</button><br>
+    <button id="cuarto">Añadir cuadrado amarillo al principio</button><br>
+    <button id="quinto">Eliminar ultimo elemento</button><br>
+    <button id="sexto">Eliminar primer elemento</button>
+</body>
+</html>

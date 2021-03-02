@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $('#primero').click(function(){
+                $('#lista').empty();
+            });
+            $('#segundo').click(function(){
+                if($('#lista').children().length==0 || $('#lista').children().length>4){
+                    $('#lista').empty();
+                    for(let i=1; i<5; i++){
+                        $('#lista').append('<li>Elemento '+i+'</li>');
+                    }
+                }
+            });
+            $('#tercero').click(function(){
+                $('#lista').append('<li>Otro item</li>');
+            });
+            $('#cuarto').click(function(){
+                $('#lista').prepend('<li>Otro elemento al principio</li>');
+            });
+            $('#quinto').click(function(){
+                $('#lista').children().last().remove();
+            });
+            $('#sexto').click(function(){
+                $('#lista').children().first().remove();
+            });
+            $('#septimo').click(function(){
+                $('#lista').children().first().remove();
+                $('#lista').children().first().remove();
+            });
+            $('#octavo').click(function(){
+                $('#lista').children().last().remove();
+                $('#lista').children().last().remove();
+            });
+        });
+    </script>
+</head>
+<body>
+    <ul id="lista">
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+    </ul>
+    <button id="primero">Eliminar elementos</button>
+    <button id="segundo">Restaurar elementos</button>
+    <button id="tercero">Añadir item</button>
+    <button id="cuarto">Añadir item principio</button>
+    <button id="quinto">Eliminar item final</button>
+    <button id="sexto">Eliminar item principio</button>
+    <button id="septimo">Eliminar los dos primeros</button>
+    <button id="octavo">Eliminar dos ultimos</button>
+</body>
+</html>
