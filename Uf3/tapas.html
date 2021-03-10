@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #contenedor {
+            display: flex;
+            flex-direction: row;
+        }
+
+        img {
+            width: 250px;
+            height: 200px;
+        }
+
+        #contenedor>div {
+            margin-right: 30px;
+        }
+
+        #botones {
+            display: flex;
+            flex-direction: column;
+        }
+        #total{
+            display: flex;            
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            let totalCam1 = 0;
+            let totalCam2 = 0;
+            let botCam1 = document.getElementById("cam1");
+            let botCam2 = document.getElementById("cam2");
+            
+        }
+    </script>
+</head>
+
+<body>
+    <div id="contenedor">
+        <div id="imagenes">
+            <img src="https://i.blogs.es/36d336/650_1000_croquetas2/840_560.jpg">
+            <img src="https://www.annarecetasfaciles.com/files/dsc01788.jpg">
+            <img
+                src="https://vod-hogarmania.atresmedia.com/hogarmania/images/images01/2013/06/12/5c00e10116334d0001919273/1239x697.jpg">
+            <img
+                src="https://1.bp.blogspot.com/-pKwF5iupock/Wfn85VlX3pI/AAAAAAABSyw/EQBrzHz7vvYYi5hkMCWRKYmz6XXScXwLACLcBGAs/s1600/014L.JPG">
+        </div>
+        <div id="botones">
+            <div>
+                <button id="cambrer1">Cambrer 1</button>
+                <button id="cambrer2">Cambrer 2</button>
+            </div>
+            <div id="total">
+                <div id="cam1">
+                    
+                </div>
+                <div id="cam2">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            document.getElementById("opciones").addEventListener("change",function(){
+                let index = this.selectedIndex;
+                let win = window.open(this[index].value,this[index]);
+            })
+        }
+    </script>
+</head>
+<body>
+    <select id="opciones">
+        <option value="">ESCOJA UNA OPCION</option>
+        <option value="http://wikiserver.infomerce.es/index.php/Departament_d%27Inform%C3%A0tica">WikiServer</option>
+        <option value="http://www2.lamerce.com/">La merce</option>
+        <option value="https://www.google.es/">Google</option>
+    </select>
+</body>
+</html>

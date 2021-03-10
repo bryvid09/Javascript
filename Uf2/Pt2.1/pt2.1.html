@@ -11,24 +11,43 @@
         <script src="./conill.js"></script>
         <script src="./lleo.js"></script>
         <script src="./tigre.js"></script>
-        <script>                        
-            var tab = new Tablero();
-            window.onload = function () {
-                tab.iniciarTablero();
-                tab.rellenarAnimales();
-                tab.mostrarTabla();
-            };
-            function move() {
-                tab.moverAnimales();
+        <script>
+            var tablero;                        
+            function inicio(){
+                tablero = new Tablero();                
+            }   
+            function move(){
+                tablero.moverAnimales();
             }
+            function reiniciar(){
+                tablero = new Tablero();
+            }
+            window.onload = function(){
+                document.getElementById("iniciar").addEventListener("click",inicio);                
+            }                 
+
         </script>
     </head>
     <body>
-        <h1>Fauna en movimiento</h1>
-        <input type="button" onclick="move()" value="mover">
-        <div id="tableros">
-            <div id="t1"></div>
-            <div id="t2"></div>
-        </div>
+        @forelse ($conversaciones as $key1 => $valor1)
+                   
+                            {{ $key1 }}
+                   
+                        @foreach ($valor1 as $key2 => $valor2)
+                   
+                                @foreach ($valor2 as $key3 => $valor3)
+                                    {{ $key3 }}
+                                        @foreach ($valor3 as $key4 => $valor4)
+                                            {{ $valor4 }}
+                                        @endforeach
+
+                                @endforeach
+                                {{ substr($key2, 0, 5) }}
+                            
+                        @endforeach
+                    
+                @empty
+
+                @endforelse
     </body>
 </html>

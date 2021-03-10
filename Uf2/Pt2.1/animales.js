@@ -3,24 +3,32 @@ class Animal {
         this.img = img;
         this.opt = '+';
     }
+
     get verImg() {
         return this.img;
     }
+
     set cambiarImg(img) {
         this.img = img;
     }
+
     set cambiarOpt(opt) {
         this.opt = opt;
     }
+
     transformar(raça) {
-        if (raça instanceof Cavall || raça instanceof Lleo || raça instanceof Tigre || raça instanceof Conill) {
-            raça = new Animal('desconegut');
-            return raça;
-        }
-        else{
-            return raça;
-        }
+        return this;
     }
+
+    /**
+     * 
+     * @param {columna} x 
+     * @param {fila} y 
+     * @param {tamaño tabla} limite 
+     * this.opt controla si se suma
+     * o se resta y con ello consigo
+     * el movimiento en "S"
+     */
     mover(x, y, limite) {
         if (this.opt == '+') {
             x++;
