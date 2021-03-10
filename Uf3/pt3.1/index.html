@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naves</title>
+    <script src="./nave.js"></script>
+    <script>
+        window.onload = function () {
+            let nav = new Nave('rojo', '100');
+            nav.crearDiv();
+            let nav2 = new Nave('azul', '300');
+            nav2.crearDiv();
+            document.onkeydown = function(e){
+                
+                nav.moverTeclado(e);                
+                nav.dibujar();
+            }
+            document.onmousemove = function(e){
+                nav2.moverRaton(e);
+                nav2.dibujar();
+            }
+        }
+    </script>
+   
+</head>
+
+<body>
+   
+</body>
+
+</html>
