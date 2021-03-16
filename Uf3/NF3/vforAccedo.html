@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <div id="el">
+        <ul>
+            <!-- <li v-text="profesores[0]"></li>-->
+            <li v-for="profesor in profesores">
+                <span v-text="profesor.nombre"></span>
+                <small v-if="profesor.activo">-Activo</small>
+                <small v-else>-NO está</small>
+
+            </li>
+        </ul>
+    </div>
+</html></body><script src="https://cdn.jsdelivr.net/npm/vue"></script><script>
+var variable = new Vue({
+    el: '#el',
+    data: {
+        profesores: [
+            {
+                nombre: "Julio Noguera",
+                activo: true
+            }, {
+                nombre: "Albert Canela",
+                activo: true
+            }, {
+                nombre: "Alex Salinas",
+                activo: false
+            }
+
+        ]
+    }
+})
+//en Consola del navegador->
+// variable.profesores[0].nombre ="Pepe"
+// variable.profesores.push({nombre:"Joan Comas",activo:true})</html>
+</script>
+

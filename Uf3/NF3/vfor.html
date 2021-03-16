@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="el">
+            <ul>
+                <!-- <li v-text="profesores[0]"></li>-->
+                <li v-for="profesor in profesores" v-text="profesor"></li>
+            </ul>
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var variable = new Vue({
+            el: '#el',
+            data: {
+                profesores: [
+                    // utilizamos un array con cadenas
+                    "Julio Noguera",
+                    "Albert Canela",
+                    "Alex Salinas"
+
+                ]
+            }
+        })
+    </script>
+</html>

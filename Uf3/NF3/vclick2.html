@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <style>
+        .false {
+            background: blue
+        }
+        .true {
+            background: green
+        }
+    </style>
+    <body>
+        <div class="container">
+            <div id="elemento">
+                <ul>
+                    <li v-for="profe in profesores">
+                        <span v-text="profe.nombre"></span>
+                        <span @click="profe.activo=false" v-if="profe.activo" class="false">X</span>
+                        <span @click="profe.activo=true" v-else class="true">X</span>
+
+                    </li>
+                </ul>
+                <pre>
+                        {{$data}}
+                </pre>
+
+
+            </div>
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var variable = new Vue({
+            el: '#elemento',
+            data: {
+
+                profe: "",
+
+                profesores: [
+                    {
+                        nombre: "Julio Noguera",
+                        activo: true
+                    }, {
+                        nombre: "Albert Canela",
+                        activo: true
+                    }, {
+                        nombre: "Alex Salinas",
+                        activo: false
+                    }
+
+                ]
+
+            }
+        })
+    </script>
+</html>

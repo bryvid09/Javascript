@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="el">
+            <h1 v-show="mensaje.length > 2">Hola
+                <span v-text="mensaje"></span>
+            </h1>
+            <!--si el mensaje es mayor que 2 muestra en caso contrario hace un display:none en css-->
+            <input type="text" class="text" v-model="mensaje">
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+
+        var variable = new Vue({
+            el: '#el',
+            data: {
+                mensaje: "resultado"
+            }
+        })
+    </script>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="el">
+
+            <input type="text" v-model="mensaje">
+            <h1 v-text="mensaje"></h1>
+            <!--  <button @click="mensaje=mensaje.split('').reverse('').join('')">BOTON</button> <!-- @click es abreviación de v-on:click -->
+
+            <button @click="invertir">INVERTIR</button>
+
+        </div>
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        var variable = new Vue({
+            el: '#el',
+            data: {
+
+                mensaje: " ",
+
+                profesores: [
+                    {
+                        nombre: "Julio Noguera",
+                        activo: true
+                    }, {
+                        nombre: "Albert Canela",
+                        activo: true
+                    }, {
+                        nombre: "Alex Salinas",
+                        activo: false
+                    }
+
+                ]
+            },
+            methods: {
+                invertir: function () {
+                    this.mensaje = this.mensaje.split('').reverse('').join(''); // utilizamos this.mensaje para acceder a los datos
+                }
+            }
+        })
+    </script>
+</html>
