@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div
+            id="aplicacion">
+            <!-- vue está disponible en todo este div-->
+            <hola-mundo></hola-mundo>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+        <script>
+            Vue.component('hola-mundo', { // debe coincidir con el nombre del componente(etiqueta html)
+                template: `<p>
+                   Hola mundo
+                </p>`
+            });
+
+            // nueva instacia de Vue : new Vue
+            var app = new Vue({
+                el: '#aplicacion', // el elemento donde se aplicará Vue, en este caso un div con id = main
+                data: { // capa de datos
+
+                },
+                methods: {}
+            });
+        </script>
+    </body>
+</html>

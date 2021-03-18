@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="container">
+          <peliculas titulo="peliculon 1917"
+            imagen="https://i.blogs.es/12dc1b/trailer-de-godzilla-vs-kong-podria-llegar-pronto/1366_2000.jpg"></peliculas>
+            <peliculas titulo="peliculon 1917"
+            imagen="https://i.blogs.es/12dc1b/trailer-de-godzilla-vs-kong-podria-llegar-pronto/1366_2000.jpg"></peliculas>
+            <peliculas titulo="peliculon 1917"
+            imagen="https://i.blogs.es/12dc1b/trailer-de-godzilla-vs-kong-podria-llegar-pronto/1366_2000.jpg"></peliculas>
+            <peliculas titulo="peliculon 1917"
+            imagen="https://i.blogs.es/12dc1b/trailer-de-godzilla-vs-kong-podria-llegar-pronto/1366_2000.jpg"></peliculas>
+        </div>
+      </body>
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.18/vue.js">
+      </script>
+      <script type="text/javascript">
+        Vue.config.devtools = true;
+      
+        Vue.component('peliculas', {
+      
+          props: ['imagen', 'titulo'],  //los props reciben los datos externos del html en este caso será "peliculon 1917" y la ruta de la imagen
+          template: 
+            `<div>
+            <img width="100px" v-bind:src="imagen" :alt="titulo"/>  <!-- v-bind:alt se reduce en :alt , al ser un atributo no se puede usar {{}} sino v-bind-->
+            <h2> {{titulo}} </h2>
+            </div>`
+        });
+      
+      
+        new Vue({
+          el: '#container'
+        })
+      </script>
+</html>

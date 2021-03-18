@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naves</title>    
-    <script src="./botiquin.js"></script>
-    <script src="./nave.js"></script>    
-    <script src="./juego.js"></script>
-    <script>
-        window.onload = function () {
-            let juego = new Juego();
-        }
-    </script>
-   
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Naves</title>
+        <script src="./juego.js"></script>
+        <script src="./botiquin.js"></script>
+        <script src="./nave.js"></script>
+        <script>
+            window.onload = function () {
+                let jue = new Juego();
+                
+                this.addEventListener('resize', function () {
+                    jue.cambioTamaño(jue);
+                });
 
-<body>
-   
-</body>
+                document.onkeydown = function (e) {
+                    if (jue.verEstado == 'inicio') {
+                        inicio = jue.iniciar(e);
+                    } else if (jue.verEstado == 'jugando') {
+                        jue.moverNaves(e);
+                    }
+                }
+                
+                document.onmousemove = function (e) {
+                    if (jue.verEstado == 'jugando') {
+                        jue.moverNaves(e);
+                    }
+                }
+
+            }
+        </script>
+
+    </head>
+
+    <body></body>
 
 </html>
