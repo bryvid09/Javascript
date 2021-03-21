@@ -24,11 +24,14 @@ class Juego {
     iniciar(event) {
         if (event.keyCode == '32') {
             document.body.removeChild(this.panelInicio);
-            this.panel.setAttribute('id', 'tablero');
-            this.panel.style.backgroundColor = 'black';
+            this.panel.setAttribute('id', 'tablero');            
             this.panel.style.width = this.wid - 40 + "px";
             this.panel.style.height = this.hei - 40 + "px";
             this.panel.style.margin = 'auto';
+            this.panel.style.position = 'fixed';
+            this.panel.style.backgroundImage = "url('./img/fondo.jpg')";
+            this.panel.style.backgroundSize = '1300px';
+            this.panel.style.backgroundRepeat = 'repeat';
             document.body.appendChild(this.panel);
             this.botiquines.map((el) => {
                 el.crearDiv();
@@ -36,10 +39,16 @@ class Juego {
                 el.dibujar();
             })
             this.nave1.crearDiv();
-            this.nave2.crearDiv();
+            this.nave2.crearDiv();                             
             this.estado = 'jugando';
         }
 
+    }
+
+    moverFondo(juego){
+        if(juego.verEstado == 'jugando') {
+            juego.panel.style.backgroundPositionY = parseInt(juego.panel.style.backgroundPositionY) + 50 + 'px';
+        }        
     }
 
     cambioTamaño(juego) {
