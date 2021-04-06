@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="aplicacion">
+            <p>Ingrese la clave:
+                <input type="password" v-model="clave1">
+            </p>
+            <p>Repita la clave:
+                <input type="password" v-model="clave2">
+            </p>
+            <p v-if="clave1===clave2">Las claves son iguales.</p>
+            <p v-else>Las claves son distintas.</p>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script>
+            var app = new Vue({
+                el: '#aplicacion',
+                data: {
+                    clave1: '',
+                    clave2: ''
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script>
+            window.onload = function () {
+                let angelet = document.querySelector('.angelet');
+                let diablet = document.querySelector('.diablet');
+                angelet.addEventListener('click', añadirBot);
+                diablet.addEventListener('click', eliminarBot);
+                function añadirBot(){
+                    let rand = Math.floor(Math.random() * 11)+1;
+                    for (let i = 0; i < rand; i++) {
+                        let randBot = Math.floor(Math.random() * 2);
+                        let bot = document.createElement('button');
+                        let botText;
+                        if(randBot == 1) {
+                            botText = document.createTextNode('Angelet');
+                            bot.addEventListener('click',añadirBot);
+                        } else{
+                            botText = document.createTextNode('Diablet');
+                            bot.addEventListener('click',eliminarBot);
+                        }
+                        bot.setAttribute('class', 'angelet');
+                        bot.appendChild(botText);                        
+                        document.body.appendChild(bot);
+                    }
+                }
+
+                function eliminarBot(){
+                    let rand = Math.floor(Math.random() * 20);
+                    for (let i = 0; i < rand; i++) {
+                        document.body.removeChild(document.body.lastChild);
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <button class="angelet">Angelet</button>
+        <button class="diablet">Diablet</button>
+    </body>
+</html>
