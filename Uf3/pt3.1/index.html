@@ -1,41 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Naves</title>
-        <script src="./juego.js"></script>
-        <script src="./botiquin.js"></script>
+        <title>Document</title>
         <script src="./nave.js"></script>
-        <script>
-            window.onload = function () {
-                let jue = new Juego();
-                
-                this.addEventListener('resize', function () {
-                    jue.cambioTamaño(jue);
-                });
-
-                document.onkeydown = function (e) {
-                    if (jue.verEstado == 'inicio') {
-                        inicio = jue.iniciar(e);
-                    } else if (jue.verEstado == 'jugando') {
-                        jue.moverNaves(e);
-                    }
-                }
-                
-                document.onmousemove = function (e) {
-                    if (jue.verEstado == 'jugando') {
-                        jue.moverNaves(e);
-                    }
-                }
-
-                setInterval(jue.moverFondo,500,jue); 
+        <script src="./botiquin.js"></script>
+        <script src="./juego.js"></script>
+        <script src="./index.js"></script>
+        <style>
+            .parpadea {
+                animation-name: parpadeo;
+                animation-duration: 1s;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
             }
-        </script>
 
+            @keyframes parpadeo {
+                0% {
+                    opacity: 1.0;
+                }
+                50% {
+                    opacity: 0.0;
+                }
+                100% {
+                    opacity: 1.0;
+                }
+            }
+        </style>
     </head>
-
     <body></body>
-
 </html>
