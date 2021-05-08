@@ -10,7 +10,7 @@ window.onload = function() {
             juego.start();
         } else if (e.keyCode == 113 && juego.verEstado == 'start') {
             juego.cambiarModo();
-        }else if (e.keyCode == 65 && juego.verEstado == 'start') {            
+        }else if (e.keyCode == 114 && juego.verEstado == 'start') {            
             juego.subirDificultad();
         }else if (juego.verEstado == 'start') {
             juego.update(e);

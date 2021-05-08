@@ -21,7 +21,7 @@ class Juego{
 
     tiempo(juego){
         juego.segundos++;
-        if(juego.segundos == 20) {
+        if(juego.segundos == 60) {
             juego.parar();            
         } else{
             document.getElementById('time').innerHTML = juego.segundos;
@@ -29,7 +29,7 @@ class Juego{
     }
 
     parar(){
-        if (this.segundos == 20) {
+        if (this.segundos == 60) {
             this.estado = 'end';
             this.bola.eliminarBola();
             clearInterval(this.movimientoBola);
@@ -43,11 +43,13 @@ class Juego{
             }
         }
         this.estado = 'stop';
+        clearInterval(this.cuentaTiempo);
         clearInterval(this.movimientoBola);
     }
 
     reanudar(){
         this.movimientoBola = setInterval(this.moverBola,50,this);
+        this.cuentaTiempo = setInterval(this.tiempo,1000,this);
         this.estado = 'start';
     }
 
