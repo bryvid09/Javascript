@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            let datos;
+            function mostrar_datos(){
+                if (datos.readyState == 4 && datos.status ==200) {
+                    document.getElementById('info').innerHTML = datos.responseText;
+                }
+            }
+
+            function iniciar(){
+                datos = new XMLHttpRequest();
+                let url = 'infoGet.php';
+                datos.open("POST", url, true);
+                datos.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                datos.onreadystatechange = mostrar_datos;
+                datos.send(null);
+            }
+
+            document.getElementById('mostrar').onclick = iniciar;
+        }
+    </script>
+</head>
+<body>
+    <button id="mostrar">Mostar</button>
+    <div id="info">
+
+    </div>
+</body>
+</html>
