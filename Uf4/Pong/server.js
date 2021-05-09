@@ -3,7 +3,7 @@ var app = express();
 var path = require('path');
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
-var conexiones = [];
+var conexiones = 0;
 var jugadores = {};
 var rooms = [];
 
@@ -14,39 +14,53 @@ server.listen(8080, function () {
 });
 
 function getConexiones() {
-    io.sockets.emit('getConexiones', conexiones.length);
+    io.sockets.emit('getConexiones', conexiones);
 }
 
-function enviarJugadores() {    
-    io.sockets.emit('jugadores', jugadores);
+function enviarRoom() {
+    io.sockets.emit('room', rooms);
 }
 
-
-
-setInterval(enviarJugadores, 30);
 
 io.sockets.on('connection', function (socket) {
-    conexiones.push(socket);
+    conexiones++;
+
     getConexiones();
 
-    socket.on('start', function (data) {                    
+    socket.on('start', function (data) {
         jugadores[socket.id] = data;
         if (!rooms.length) {
             rooms.push([data]);
         } else {
+            let encontrada = false; // Para comprobar si encontro una room con un jugador
             for (let i = 0; i < rooms.length; i++) {
-                if (rooms[i].length == 1){
+                if (rooms[i].length == 1) {
                     rooms[i].push(data);
-                } else{
-                    
+                    encontrada = true // Si la encuentra no hara falta crear otra
                 }
             }
-        }        
+            if (!encontrada) { // Creacion de otra room
+                rooms.push([data]);
+            }            
+        }      
+        enviarRoom();       
+    });
+
+    socket.on('disconnect', function(){
+        for (let i = 0; i < rooms.length; i++) {
+            for (let l = 0; l < rooms[i].length; l++){
+                if (socket.id == rooms[i][l].id){
+                    rooms[i].splice(l,1);
+                }
+            }
+            if (!rooms[i].length) {
+                rooms.splice(i,1);
+            }
+        }
+        delete jugadores[socket.id];
+        conexiones --;
+        getConexiones();
+        enviarRoom(); 
     });
 });
 
-// io.sockets.on('disconnect', function(){
-//     for (let i = 0; i < jugadores.length; i++) {
-        
-//     }
-// });
