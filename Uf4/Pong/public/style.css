@@ -46,6 +46,7 @@ body {
     width: 11px;
     border: solid 1px red;
     background-color: green;
+    visibility: hidden;
 }
 
 #jug1{

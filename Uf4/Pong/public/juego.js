@@ -1,8 +1,7 @@
 class Juego{
-    constructor(){
-        this.jugador1 = new Jugador('1');
-        this.jugador2 = new Jugador('2');
-        this.bola = new Bola(0);        
+    constructor(jugador){
+        this.juagador = jugador;
+        //this.bola = new Bola(0);        
         this.estado = 'begin';
     }
 
@@ -13,11 +12,13 @@ class Juego{
     iniciar(){
         this.estado = 'start';
         this.segundos = 0;
-        this.bola.crearElemento();      
-        document.getElementById('time').innerHTML = this.segundos;
-        this.movimientoBola = setInterval(this.moverBola,50,this);
-        this.cuentaTiempo = setInterval(this.tiempo,1000,this);
+        // this.bola.crearElemento();      
+        // document.getElementById('time').innerHTML = this.segundos;
+        // this.movimientoBola = setInterval(this.moverBola,50,this);
+        // this.cuentaTiempo = setInterval(this.tiempo,1000,this);
     }
+
+    
 
     tiempo(juego){
         juego.segundos++;
@@ -26,6 +27,10 @@ class Juego{
         } else{
             document.getElementById('time').innerHTML = juego.segundos;
         }
+    }
+
+    dibujarJugador(){
+        this.jugador.dibuja();
     }
 
     parar(){
@@ -69,13 +74,7 @@ class Juego{
     }
 
     moverJugadores(event) {        
-        if (event.type == 'keydown') {
-            this.jugador1.moverTeclado(event);
-            this.jugador1.dibuja();
-        } else if (event.type == 'mousemove') {
-            this.jugador2.moverRaton(event);
-            this.jugador2.dibuja();
-        }
+        this.jugador.mover();
     }
 
 
