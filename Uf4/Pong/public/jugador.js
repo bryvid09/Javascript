@@ -1,6 +1,7 @@
 class Jugador {
     constructor(jugador) {
         this.numJug = jugador;
+        this.ready = false;
         this.puntuacion = 0;
         this.jugador = document.getElementById('jug' + jugador);
         this.jugador.style.visibility = 'visible';
@@ -36,6 +37,10 @@ class Jugador {
 
     get verPuntuacion() {
         return this.puntuacion;
+    }
+    
+    get verJugador(){
+        return this.jugador;
     }
 
     mover(evento) {

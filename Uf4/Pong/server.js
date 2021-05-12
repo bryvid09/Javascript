@@ -13,8 +13,18 @@ server.listen(8080, function () {
     console.log('Servidor corriendo en http://localhost:8080');
 });
 
-function getConexiones() {
-    io.sockets.emit('getConexiones', conexiones);
+function getNumero() {
+    let num = 1;
+    if (rooms.length) {
+        for (let i = 0; i < rooms.length; i++) {
+            if (rooms[i].length == 1) {
+                if (rooms[i][0].numJug == 1) {
+                    num = 2;
+                }
+            }
+        }
+    }
+    io.sockets.emit('getNumero', num);
 }
 
 function enviarRoom() {
@@ -22,10 +32,12 @@ function enviarRoom() {
 }
 
 
-io.sockets.on('connection', function (socket) {
-    conexiones++;
 
-    getConexiones();
+io.sockets.on('connection', function (socket) {    
+
+    getNumero();
+
+
 
     socket.on('start', function (data) {
         jugadores[socket.id] = data;
@@ -41,26 +53,34 @@ io.sockets.on('connection', function (socket) {
             }
             if (!encontrada) { // Creacion de otra room
                 rooms.push([data]);
-            }            
-        }      
-        enviarRoom();       
+            }
+        }
+        enviarRoom();
     });
 
-    socket.on('disconnect', function(){
+    socket.on('statusJugadores', function (data) {
         for (let i = 0; i < rooms.length; i++) {
-            for (let l = 0; l < rooms[i].length; l++){
-                if (socket.id == rooms[i][l].id){
-                    rooms[i].splice(l,1);
+            for (let l = 0; l < rooms[i].length; l++) {
+                if (socket.id == rooms[i][l].id) {
+                    rooms[i][l].ready = true;
+                }
+            }
+        }
+        enviarRoom();
+    });
+
+    socket.on('disconnect', function () {
+        for (let i = 0; i < rooms.length; i++) {
+            for (let l = 0; l < rooms[i].length; l++) {
+                if (socket.id == rooms[i][l].id) {
+                    rooms[i].splice(l, 1);                    
                 }
             }
             if (!rooms[i].length) {
-                rooms.splice(i,1);
+                rooms.splice(i, 1);
             }
         }
-        delete jugadores[socket.id];
-        conexiones --;
-        getConexiones();
-        enviarRoom(); 
+        delete jugadores[socket.id];              
+        enviarRoom();
     });
 });
-

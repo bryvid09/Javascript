@@ -1,60 +1,92 @@
 html,
 body {
-    margin: 0px;
-    height: 100%;
+  margin: 0px;
+  height: 100%;
 }
 
 #container {
-    height: 100%;
-    width: 100%;    
-    background-color: black;  
-    display: flex;  
-    flex-direction: column;        
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
 }
 
 #puntuaciones {
-    display: flex;
-    justify-content: space-between;
-    padding-left: 30px;
-    padding-right: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
-#punt1, #punt2, #time {
-    color: green;
-    font-size: 60px;
-    font-weight: bold;
+#punt1,
+#punt2,
+#time {
+  color: green;
+  font-size: 60px;
+  font-weight: bold;
 }
 
 #time {
-    color: white;
+  color: white;
 }
 
-#separadorTop{
-    background-color: green;
-    height: 10px;  
-    border: solid 1px red;
+#status {
+  color: white;
+  font-size: 30px;
+  font-weight: bold;
+  animation-name: parpadeo;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
 }
 
-#area{
-    width: 100%;    
-    height: 100%;            
+@keyframes parpadeo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
-#jug1, #jug2 {
-    position: absolute;
-    height: 80px;
-    width: 11px;
-    border: solid 1px red;
-    background-color: green;
-    visibility: hidden;
+#separadorTop {
+  background-color: green;
+  height: 10px;
+  border: solid 1px red;
 }
 
-#jug1{
-    left: 5px;
-    top: 85px;  
+#area {
+  width: 100%;
+  height: 100%;
+}
+
+#jug1,
+#jug2 {
+  position: absolute;
+  height: 80px;
+  width: 11px;
+  border: solid 1px red;
+  background-color: green;
+  visibility: hidden;
+}
+
+#espera {
+  position: absolute;
+  color: white;
+  font-size: 30px;
+}
+
+#jug1 {
+  left: 5px;
+  top: 85px;
 }
 
 #jug2 {
-    right: 5px;
-    top: 85px;  
+  right: 5px;
+  top: 85px;
 }

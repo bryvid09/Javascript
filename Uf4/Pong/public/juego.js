@@ -1,13 +1,23 @@
 class Juego{
-    constructor(jugador){
-        this.juagador = jugador;
+    constructor(jugadores){
+        this.juagadores = jugadores;
         //this.bola = new Bola(0);        
         this.estado = 'begin';
     }
 
+    mostrarRival(jugador){
+        for (let i = 0; i < this.juagadores.length; i++){
+            if (this.juagadores[i].id != jugador.id){
+                document.getElementById('jug'+this.juagadores[i].numJug).style.visibility = 'visible';
+            }
+        }
+    }
+
     get verEstado(){
         return this.estado;
-    }    
+    }
+    
+    
 
     iniciar(){
         this.estado = 'start';
@@ -15,7 +25,7 @@ class Juego{
         // this.bola.crearElemento();      
         // document.getElementById('time').innerHTML = this.segundos;
         // this.movimientoBola = setInterval(this.moverBola,50,this);
-        // this.cuentaTiempo = setInterval(this.tiempo,1000,this);
+        this.cuentaTiempo = setInterval(this.tiempo,1000,this);
     }
 
     
@@ -25,7 +35,7 @@ class Juego{
         if(juego.segundos == 60) {
             juego.parar();            
         } else{
-            document.getElementById('time').innerHTML = juego.segundos;
+            document.getElementById('status').innerHTML = juego.segundos;
         }
     }
 
