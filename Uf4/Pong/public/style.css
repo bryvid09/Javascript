@@ -20,8 +20,8 @@ body {
   padding-right: 30px;
 }
 
-#punt1,
-#punt2,
+#izquierdaPunto,
+#derechaPunto,
 #time {
   color: green;
   font-size: 60px;
@@ -65,14 +65,13 @@ body {
   height: 100%;
 }
 
-#jug1,
-#jug2 {
+#izquierda,
+#derecha {
   position: absolute;
   height: 80px;
   width: 11px;
   border: solid 1px red;
-  background-color: green;
-  visibility: hidden;
+  background-color: green;  
 }
 
 #espera {
@@ -81,12 +80,14 @@ body {
   font-size: 30px;
 }
 
-#jug1 {
+#izquierda {
   left: 5px;
   top: 85px;
 }
 
-#jug2 {
+#derecha {
   right: 5px;
   top: 85px;
 }
+
+

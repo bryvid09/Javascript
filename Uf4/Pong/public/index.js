@@ -1,66 +1,111 @@
-var numero;
-var numJugadores = 0;
-var jugador;
-var juego;
-var room = [];
 var socket = io.connect('http://localhost:8080', {
     'forceNew': true
 });
 
-socket.on('getNumero', function (data) { //Asignacion de jugador dependiendo del que ya exista
-    numero = data;
-    if (!jugador) {
-        jugador = new Jugador(data);
-        jugador.id = socket.id;        
-        socket.emit('start', jugador);
-    }
-});
+var jugador;
+var room = [];
+var juego = new Juego;
+var bola;
 
-socket.on('room', function (data) { // Obtencion de la sala en la cual vamos a jugar
-    let status = document.getElementById('status');
-    for (let i = 0; i < data.length; i++) {
-        for (let l = 0; l < data[i].length; l++) {
-            if (socket.id == data[i][l].id) {
-                room = data[i];
-                jugador = data[i][l];
-            }            
-        }       
-    }
-    
-    if (room.length < 2){
-        status.style.animationName = 'parpadeo';
-        status.innerHTML = 'BUSCANDO RIVAL...';
-        if (jugador.numJug == 1) {
-            document.getElementById('jug2').style.visibility = 'hidden';
-        } else {
-            document.getElementById('jug1').style.visibility = 'hidden';
+window.onload = function () {
+
+    /**
+     * Emite el lado del jugador para que no se pisen
+     * unos con otros
+     */
+    socket.on('lado', function (data) {
+        let elemento = document.getElementById(data)
+        if (!jugador) {
+            jugador = {
+                lado: data,
+                posY: elemento.getBoundingClientRect().y,
+                posX: elemento.getBoundingClientRect().x,
+                limiteSup: elemento.getBoundingClientRect().y,
+                limiteInf: document.getElementById('area').clientHeight - 5,
+                puntos: 0,
+            }
+            socket.emit('start', jugador);
         }
-    } else if (room.length == 2 && !jugador.ready) {
-        status.style.animationName = 'parpadeo';
-        status.innerHTML = 'ENCONTRADO! PRESIONA "S" SI ESTAS LISTO';
-        status.style.color = '#08A1AF';
-        juego = new Juego(room);
-        juego.mostrarRival(jugador);        
-    } else if (room.length == 2 && jugador.ready){              
-        for (let i = 0; i < room.length; i++){
-            if (room[i].id != socket.id && !room[i].ready) {
-                status.innerHTML = 'ESPERANDO CONFIRMACIÓN DEL RIVAL...';                
-            } else {
-                status.innerHTML = '0';
-                status.style.animationName = 'none';
-                juego.iniciar();
-                
+        bola = {
+            direccionX: 1,
+            direccionY: 0,
+            limiteSup: 80,
+            limiteInf: document.getElementById('area').clientHeight + 62,
+            posX: Math.floor(document.getElementById('area').clientWidth / 2),
+            posY: 250,
+            limiteWidth: document.getElementById('area').clientWidth - 18,
+        }
+        socket.emit('bola', bola);
+        juego.crearBola(bola);
+    });
+
+    /**
+     * Separe los jugadores por salas no se logro identificar la
+     * desconexion del jugador, tambien en esta función pinto a los
+     * jugadores, la bola y el tiempo.
+     */
+    socket.on('rooms', function (rooms) {          
+        
+        for (let i = 0; i < rooms.length; i++) {
+            for (let j = 0; j < rooms[i].length; j++) {
+                if (rooms[i][j].name == 'jugador' && rooms[i][j].id == socket.id) {
+                    room = rooms[i];
+                    for (let l = 0; l < room.length; l++) {
+                        if (room[l].name == 'jugador') {
+                            juego.updateJugador(room[l]);
+                        }
+                        if (room[l].name == 'bola') {
+                            if (room[l].punto) {
+                                if (room[l].posX < document.getElementById('area').clientWidth / 2) {
+                                    bola = {
+                                        direccionX: 1,
+                                        direccionY: 0,
+                                        limiteSup: 80,
+                                        limiteInf: document.getElementById('area').clientHeight + 62,
+                                        posX: Math.floor(document.getElementById('area').clientWidth / 2),
+                                        posY: 250,
+                                        limiteWidth: document.getElementById('area').clientWidth - 18,
+                                    }
+                                } else {
+                                    bola = {
+                                        direccionX: 0,
+                                        direccionY: 0,
+                                        limiteSup: 80,
+                                        limiteInf: document.getElementById('area').clientHeight + 62,
+                                        posX: Math.floor(document.getElementById('area').clientWidth / 2),
+                                        posY: 250,
+                                        limiteWidth: document.getElementById('area').clientWidth - 18,
+                                    }
+                                }
+                                socket.emit('nuevaBola', bola);
+                            }
+                            juego.updateBola(room[l]);
+                        }
+                        if (room[l].name == 'tiempo') {
+                            juego.updateTiempo(room[l]);
+                        }
+                    }
+                }
+                if (room.length == 1) {
+                    document.getElementById('time').innerHTML = 'Esperando rival';
+                }
             }
         }
-        juego.mostrarRival(jugador); 
-    }
-    
-});
+    });
 
-window.onload = function(){
+    /**
+     * Fin del juego
+     */
+    socket.on('fin', function() {
+        document.getElementById('time').innerHTML = 'FIN!';
+        document.getElementById('bola').style.visibility = 'hidden';
+    });
+    
     document.onkeydown = function (event) {
-        if (event.keyCode == 83 && !jugador.ready) {            
-            socket.emit('statusJugadores',jugador);
-        }
+        socket.emit('mover', [event.type, event.keyCode]);        
+    }
+
+    document.onmousemove = function (event) {
+        socket.emit('mover', [event.type, event.pageY]);
     }
 }

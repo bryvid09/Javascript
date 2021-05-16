@@ -1,5 +1,5 @@
 class Jugador {
-    constructor(jugador) {
+    constructor() {
         this.numJug = jugador;
         this.ready = false;
         this.puntuacion = 0;
@@ -13,65 +13,65 @@ class Jugador {
         this.id = '0';
     }
 
-    // Funciones las cual no puedo utilizar en webSocket
-    set cambiaId(id){
-        this.id = id;
-    }
+    // // Funciones las cual no puedo utilizar en webSocket
+    // set cambiaId(id){
+    //     this.id = id;
+    // }
 
-    get verId(){
-        return this.id;
-    }
+    // get verId(){
+    //     return this.id;
+    // }
 
-    get verNum() {
-        return this.numJug;
-    }
+    // get verNum() {
+    //     return this.numJug;
+    // }
 
 
-    get verPosX() {
-        return this.posX;
-    }
+    // get verPosX() {
+    //     return this.posX;
+    // }
 
-    get verPosY() {
-        return this.posY;
-    }
+    // get verPosY() {
+    //     return this.posY;
+    // }
 
-    get verPuntuacion() {
-        return this.puntuacion;
-    }
+    // get verPuntuacion() {
+    //     return this.puntuacion;
+    // }
     
-    get verJugador(){
-        return this.jugador;
-    }
+    // get verJugador(){
+    //     return this.jugador;
+    // }
 
-    mover(evento) {
-        if (this.numJug == 1) {
-            if (evento.keyCode == 38) {
-                if (this.posY > this.limiteSuperior) {
-                    this.posY -= 15;
-                } else if (this.posY <= this.limiteSuperior) {
-                    this.posY = this.limiteSuperior;
-                }
-            } else if (evento.keyCode == 40) {
-                if (this.posY < this.limiteInferior) {
-                    this.posY += 15;
-                } else if (this.posY >= this.limiteInferior) {
-                    this.posY = this.limiteInferior;
-                }
-            }
-        } else if (this.numJug == 2) {
-            if (evento.clientY >= this.limiteSuperior && evento.clientY <= this.limiteInferior) {
-                this.posY = evento.clientY;
-            }
-        }
+    // mover(evento) {
+    //     if (this.numJug == 1) {
+    //         if (evento.keyCode == 38) {
+    //             if (this.posY > this.limiteSuperior) {
+    //                 this.posY -= 15;
+    //             } else if (this.posY <= this.limiteSuperior) {
+    //                 this.posY = this.limiteSuperior;
+    //             }
+    //         } else if (evento.keyCode == 40) {
+    //             if (this.posY < this.limiteInferior) {
+    //                 this.posY += 15;
+    //             } else if (this.posY >= this.limiteInferior) {
+    //                 this.posY = this.limiteInferior;
+    //             }
+    //         }
+    //     } else if (this.numJug == 2) {
+    //         if (evento.clientY >= this.limiteSuperior && evento.clientY <= this.limiteInferior) {
+    //             this.posY = evento.clientY;
+    //         }
+    //     }
 
-    }    
+    // }    
 
-    dibuja() {
-        this.jugador.style.top = this.posY + 'px';
-    }
+    // dibuja() {
+    //     this.jugador.style.top = this.posY + 'px';
+    // }
 
-    sumaPuntos() {
-        this.puntuacion++;
-        this.panelPuntuacion.innerHTML = this.puntuacion;
-    }
+    // sumaPuntos() {
+    //     this.puntuacion++;
+    //     this.panelPuntuacion.innerHTML = this.puntuacion;
+    // }
 }
